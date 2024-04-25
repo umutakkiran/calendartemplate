@@ -1,113 +1,127 @@
+'use client'
 import Image from "next/image";
+import "@bitnoi.se/react-scheduler/dist/style.css";
+import dynamic from "next/dynamic";
+const Scheduler = dynamic(() => import("@bitnoi.se/react-scheduler").then((mod) => mod.Scheduler), {
+  ssr: false
+});
+import { useState } from "react";
 
 export default function Home() {
+  const [filterButtonState, setFilterButtonState] = useState(0);
+  const [isLoading, setIsloading] = useState(false);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="  outerdiv ">
+      <div className=" w-full h-fit flex justify-between items-center mb-6 ">
+        <h3>Calendar</h3>
+        <h3>Swimming Pool Course</h3>
+        <h3>Login</h3>
+      </div>
+      <div className=" w-full h-[75vh] rounded-3xl shadow-lg bg-white p-6 border ">
+        <div className=" flex flex-row w-full h-[20%] justify-center items-center  ">
+          <h3>Calendar</h3>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <div className=" relative h-[80%]">
+          <section>
+            <Scheduler
+              
+              data={mockedSchedulerData}
+              isLoading={isLoading}
+              onRangeChange={(newRange) => console.log(newRange)}
+              onTileClick={(clickedResource) => console.log(clickedResource)}
+              onItemClick={(item) => console.log(item)}
+              onFilterData={() => {
+                // Some filtering logic...
+                setFilterButtonState(1);
+              }}
+              onClearFilterData={() => {
+                // Some clearing filters logic...
+                setFilterButtonState(0)
+              }}
+              config={{
+                zoom: 0,
+                filterButtonState,
+                
+                
+              }}
+            />
+          </section>
+        </div>
       </div>
     </main>
   );
 }
+
+const mockedSchedulerData = [
+  {
+    id: "070ac5b5-8369-4cd2-8ba2-0a209130cc60",
+    label: {
+      icon: "https://picsum.photos/24",
+      title: "Joe Doe",
+      subtitle: "Frontend Developer"
+    },
+    data: [
+      {
+        id: "8b71a8a5-33dd-4fc8-9caa-b4a584ba3762",
+        startDate: new Date("2023-04-13T15:31:24.272Z"),
+        endDate: new Date("2023-04-28T10:28:22.649Z"),
+        occupancy: 3600,
+        title: "Project A",
+        subtitle: "Subtitle A",
+        description: "array indexing Salad West Account",
+        bgColor: "rgb(167 243 208)"
+      },
+      {
+        id: "22fbe237-6344-4c8e-affb-64a1750f33bd",
+        startDate: new Date("2023-10-07T08:16:31.123Z"),
+        endDate: new Date("2023-11-15T21:55:23.582Z"),
+        occupancy: 2852,
+        title: "Project B",
+        subtitle: "Subtitle B",
+        description: "Tuna Home pascal IP drive",
+        bgColor: "rgb(167 243 208)"
+      },
+      {
+        id: "3601c1cd-f4b5-46bc-8564-8c983919e3f5",
+        startDate: new Date("2023-03-30T22:25:14.377Z"),
+        endDate: new Date("2023-09-01T07:20:50.526Z"),
+        occupancy: 1800,
+        title: "Project C",
+        subtitle: "Subtitle C",
+        bgColor: "rgb(167 243 208)"
+      },
+      {
+        id: "b088e4ac-9911-426f-aef3-843d75e714c2",
+        startDate: new Date("2023-10-28T10:08:22.986Z"),
+        endDate: new Date("2023-10-30T12:30:30.150Z"),
+        occupancy: 11111,
+        title: "Project D",
+        subtitle: "Subtitle D",
+        description: "Garden heavy an software Metal",
+        bgColor: "rgb(167 243 208)"
+      }
+    ]
+  },
+  {
+    id: "070ac5b5-8369-4cd2-8ba2-0a209130cc64",
+    label: {
+      icon: "https://picsum.photos/24",
+      title: "Ken Mıles",
+      subtitle: "Frontend Developer"
+    },
+    data: [
+      {
+        id: "8b71a8a5-33dd-4fc8-9caa-b4a584ba3762",
+        startDate: new Date("2024-04-25T15:31:24.272Z"),
+        endDate: new Date("2024-04-28T10:28:22.649Z"),
+        occupancy: 3600,
+        title: "Project A",
+        subtitle: "Subtitle A",
+        description: "array indexing Salad West Account",
+        bgColor: "rgb(167 243 208)"
+      }
+
+    ]
+  }
+];

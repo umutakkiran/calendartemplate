@@ -31,3 +31,38 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer base {
+  .outerdiv {
+    @apply  w-full min-h-screen h-fit p-10 bg-white ;
+  }
+  .primary {
+    @apply bg-red-300
+  }
+  .secondary {
+    @apply bg-cyan-600
+  }
+
+  h1, h2, h3 {
+    @apply text-emerald-400
+  }
+  p{
+    @apply font-[600] text-black
+  }
+
+  h1{
+    @apply text-5xl font-[600]
+  }
+  h2{
+    @apply text-4xl
+  }
+  h3{
+    @apply text-sm font-[800]
+  }
+  p{
+    @apply text-sm hover:cursor-pointer
+  }
+
+
+  
+}
